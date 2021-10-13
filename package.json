@@ -1,0 +1,39 @@
+{
+  "name": "test-api-backend",
+  "version": "0.0.1",
+  "description": "API Worker",
+  "main": "bin/worker",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "key:generate": "node ./bin/appKeyGenerator",
+    "start": "node ./bin/worker"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "amqp-abstract": "git+https://gitlab+deploy-token-542119:bcpx6uMPW7sGzErPzsXB@gitlab.com/yourjustice/server-utils/amqp-abstract.git",
+    "amqp-rpc-client": "git+https://gitlab+deploy-token-542119:bcpx6uMPW7sGzErPzsXB@gitlab.com/yourjustice/server-utils/amqp-rpc-client.git",
+    "bcrypt": "^5.0.1",
+    "express": "^4.17.1",
+    "express-graphql": "^0.12.0",
+    "graphql": "^15.6.1",
+    "jsconfig": "^0.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "minio": "^7.0.19",
+    "mongoose": "^5.13.6",
+    "passport": "^0.4.1",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.24.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "mocha": "^9.1.0",
+    "nodemon": "^2.0.12",
+    "prettier": "^2.3.2"
+  }
+}

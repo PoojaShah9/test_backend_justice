@@ -1,0 +1,49 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies
+ */
+const config = require('jsconfig');
+
+require('./config.loader');
+
+(async () => {
+	// mongo
+	const Mongoose = require('mongoose');
+	// wait database connecting
+	await Mongoose.connect(config.databases.main, {
+		useCreateIndex: true,
+		useNewUrlParser: true,
+		useUnifiedTopology: true,
+	});
+	// init amqp
+	// const AMQPWrapper = require('amqp-wrapper');
+	// await AMQPWrapper.connect([config.amqp || 'amqp://localhost/']);
+	// // bind queue and exchange handlers
+	// const AMQPService = require('amqp-abstract/src/services/amqp.service');
+	// const AMQPQueueService = require('amqp-abstract/src/services/queue.amqp.service');
+	// const AMQPExchangeService = require('amqp-abstract/src/services/exchange.amqp.service');
+	// amqp configure
+	// await new Promise((resolve, reject) => {
+	// 	AMQPWrapper.connection.createChannel({
+	// 		setup(channel) {
+	// 			channel.prefetch(1);
+	// 			AMQPService.channel = channel;
+	// 			Promise.resolve()
+	// 				.then(() => AMQPExchangeService.configure(channel, {}))
+	// 				.then(() => AMQPQueueService.configure(channel, {}))
+	// 				.then(() => AMQPExchangeService.emit('bindQueue'))
+	// 				.then(resolve)
+	// 				.catch(reject);
+	// 		},
+	// 	});
+	// });
+	// minio service
+	// const MinioService = require('../src/services/minio.service');
+	// wait minio init
+	// await MinioService.init();
+	// http server
+	const HttpServer = require('../src/http-server');
+	// wait server init
+	await HttpServer.init(config.http.host, config.http.port);
+})();
